@@ -56,6 +56,8 @@ class <%= metadata.name %> (
   validate_bool($service_enable)
   validate_bool($config_dir_recurse)
   validate_bool($config_dir_purge)
+  validate_re($package_ensure, '^(absent|latest|present|purged)$')
+  validate_re($service_ensure, '^(running|stopped)$')
   if $config_file_options_hash { validate_hash($config_file_options_hash) }
   if $monitor_options_hash { validate_hash($monitor_options_hash) }
   if $firewall_options_hash { validate_hash($firewall_options_hash) }
